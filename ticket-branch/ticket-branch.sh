@@ -21,8 +21,17 @@ fi
 
 # Checkout the default branch and pull the latest changes
 echo "$YELLOW"
-echo "Checking out the main branch and updating it $NC \n"
+echo "Checking out the $DEFAULT_BRANCH branch and updating it $NC \n"
 git checkout $DEFAULT_BRANCH
+
+# Check the status code for the command to make sure the
+# checkout was successful
+if [[ $? -ne 0 ]]; then
+    echo "$YELLOW"
+    echo "Cannot checkout $DEFAULT_BRANCH $NC \n"
+    exit 1
+fi
+
 git pull
 
 # Create a new branch and checkout it. Note that its name is the same as the
