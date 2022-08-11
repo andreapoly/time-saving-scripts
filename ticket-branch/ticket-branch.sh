@@ -11,16 +11,26 @@
 YELLOW='\033[1;33m'
 NC='\033[0m' # No color (used to reset color)
 
-# Checkout the main branch and pull the latest changes
-echo "$YELLOW Checking out the main branch and updating it $NC \n"
-git checkout main
+# Check whether the current repo has master or main as its default branch
+DEFAULT_BRANCH=main
+
+git branch - l | grep master -q
+if [ $? -eq 0 ]:
+    DEFAULT_BRANCH=master
+
+# Checkout the default branch and pull the latest changes
+echo "$YELLOW"
+echo "Checking out the main branch and updating it $NC \n"
+git checkout DEFAULT_BRANCH
 git pull
 
 # Create a new branch and checkout it. Note that its name is the same as the
 # name provided in the first argument of this script when invoking it
-echo "$YELLOW Creating a new branch named $1 $NC \n"
+echo "$YELLOW"
+echo "Creating a new branch named $1 $NC \n"
 git checkout -b $1
 
 # Push the branch to the origin to let the origin track it
-echo "$YELLOW Pushing the branch to the origin to let it track it $NC \n"
+echo "$YELLOW"
+echo "Pushing the branch to the origin to let it track it $NC \n"
 git push -u origin $1
