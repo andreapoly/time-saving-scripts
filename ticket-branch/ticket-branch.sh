@@ -14,14 +14,15 @@ NC='\033[0m' # No color (used to reset color)
 # Check whether the current repo has master or main as its default branch
 DEFAULT_BRANCH=main
 
-git branch - l | grep master -q
-if [ $? -eq 0 ]:
+git branch -l | grep master -q
+if [[ $? -eq 0 ]] then
     DEFAULT_BRANCH=master
+fi
 
 # Checkout the default branch and pull the latest changes
 echo "$YELLOW"
 echo "Checking out the main branch and updating it $NC \n"
-git checkout DEFAULT_BRANCH
+git checkout $DEFAULT_BRANCH
 git pull
 
 # Create a new branch and checkout it. Note that its name is the same as the
