@@ -2,8 +2,8 @@
 
 # This script is useful if your working flow is made of:
 # - start to work on a new ticket
-# - create a branch associated with the ticket starting from the main branch
-#   of the remote repository you are working on
+# - create a branch associated with the ticket starting from
+#   main/master branch of the remote repository you are working on
 # - checkout it and start to work on it
 # - push the changes to it
 
