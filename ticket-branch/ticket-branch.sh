@@ -15,7 +15,7 @@ NC='\033[0m' # No color (used to reset color)
 DEFAULT_BRANCH=main
 
 git branch -l | grep master -q
-if [[ $? -eq 0 ]] then
+if [[ $? -eq 0 ]]; then
     DEFAULT_BRANCH=master
 fi
 
